@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { useFonts } from "expo-font";
@@ -11,19 +11,22 @@ const theme = {
   },
 };
 
-
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
-
-   <NavigationContainer>
-     <Stack.Navigator>
-        <Stack.Screen/>
-        <Stack.Screen/>
+    <NavigationContainer theme={theme}>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+        initialRouteName="Home"
+      >
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Details" component={Details} />
       </Stack.Navigator>
-   </NavigationContainer>
+    </NavigationContainer>
   );
-}
+};
 
-export default App
+export default App;
