@@ -56,9 +56,9 @@ const NFTcard = ({ data }) => {
         >
           <EthPrice price={data.price} />
           <RectButton
-            minWidth={120}
-            fontSize={SIZES.font}
-            // handlePress={() => navigati on.navigate("Details", { data })}
+         minWidth={120}
+         fontSize={SIZES.font}
+         handlePress={() => navigation.navigate("Details", { data })}
           />
         </View>
       </View>
