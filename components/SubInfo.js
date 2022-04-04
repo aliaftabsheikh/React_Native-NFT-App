@@ -1,6 +1,9 @@
 import { View, Text } from "react-native";
 import React from "react";
 
+import { SIZES, FONTS, COLORS, SHADOWS, assets } from "../constants";
+
+
 export const NFTTitle = () => {
   return (
     <View>
@@ -41,10 +44,17 @@ export const EndDate = () => {
   );
 };
 
-export const Subinfo = () => {
+export const SubInfo = () => {
   return (
-    <View>
-      <Text>Subinfo</Text>
+    <View
+      style={{
+        width: "100%",
+        paddingHorizontal: SIZES.font,
+        marginTop: -SIZES.extraLarge,
+        flexDirection: "row",
+        justifyContent: "space-between",
+      }}>
+    <Text>SubInfo</Text>
     </View>
-  );
+  )
 };
