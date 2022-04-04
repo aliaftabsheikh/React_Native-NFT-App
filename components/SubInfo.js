@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import React from "react";
 
 import { SIZES, FONTS, COLORS, SHADOWS, assets } from "../constants";
@@ -20,26 +20,65 @@ export const EthPrice = () => {
   );
 };
 
-export const ImageCmp = () => {
+export const ImageCmp = ({imgUrl, index}) => {
   return (
-    <View>
-      <Text>ImageCmp</Text>
-    </View>
+    <Image
+      source={imgUrl}
+      resizeMode="contain"
+      style={{  
+        width: 48,
+        height: 48,
+        marginLeft: index === 0 ? 0 : -SIZES.font,
+      }}
+    />
   );
 };
 
 export const People = () => {
   return (
-    <View>
-      <Text>People</Text>
+    <View style={{ flexDirection: "row" }}>
+      {[assets.person02, assets.person03, assets.person04].map(
+        (imgUrl, index) => (
+          <ImageCmp imgUrl={imgUrl} index={index} key={`People-${index}`} />
+        )
+      )}
     </View>
   );
 };
 
 export const EndDate = () => {
   return (
-    <View>
-      <Text>EndDate</Text>
+    <View
+      style={{
+        paddingHorizontal: SIZES.font,
+        paddingVertical: SIZES.base,
+        backgroundColor: COLORS.white,
+        borderRadius: SIZES.font,
+        justifyContent: "center",
+        alignItems: "center",
+        ...SHADOWS.light,
+        elevation: 1,
+        maxWidth: "50%",
+      }}
+    >
+      <Text
+        style={{
+          fontFamily: FONTS.regular,
+          fontSize: SIZES.small,
+          color: COLORS.primary,
+        }}
+      >
+        Ending in
+      </Text>
+      <Text
+        style={{
+          fontFamily: FONTS.semiBold,
+          fontSize: SIZES.medium,
+          color: COLORS.primary,
+        }}
+      >
+        12h 30m
+      </Text>
     </View>
   );
 };
@@ -54,7 +93,8 @@ export const SubInfo = () => {
         flexDirection: "row",
         justifyContent: "space-between",
       }}>
-    <Text>SubInfo</Text>
+    <People/>
+    <EndDate/>
     </View>
   )
 };
