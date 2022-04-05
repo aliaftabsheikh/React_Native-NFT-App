@@ -4,7 +4,9 @@ import { COLORS, SIZES, assets, SHADOWS, FONTS } from "../constants";
 import { CircleButton, RectButton, SubInfo, DetailsDesc, DetailsBid, FocusedStatusBar } from "../components";
 
 const Details = ({ route, navigation }) => {
-  return (
+    const {data} = route.params;
+
+    return (
     <Text>Details</Text>
     )
 }
