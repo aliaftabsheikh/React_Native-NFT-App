@@ -3,6 +3,9 @@ import { View, Text, SafeAreaView, Image, StatusBar, FlatList } from "react-nati
 import { COLORS, SIZES, assets, SHADOWS, FONTS } from "../constants";
 import { CircleButton, RectButton, SubInfo, DetailsDesc, DetailsBid, FocusedStatusBar } from "../components";
 
+
+
+
 const Details = ({ route, navigation }) => {
     const {data} = route.params;
     console.log(data)
@@ -23,6 +26,19 @@ const Details = ({ route, navigation }) => {
         }}>
             <RectButton minWidth={170} fontSize={SIZES.large} {...SHADOWS.dark}/>
         </View>
+
+        <FlatList
+        data={data.bids}
+        renderItem={({item})=> <DetailsBid bid={item}/>}
+        keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom : SIZES.extraLarge * 3}}
+        ListHeaderComponent={()=>(
+            <React.Fragment>
+                <DetailsHeader/>
+            </React.Fragment>
+        )}
+        />
     </SafeAreaView>
     )
 }
