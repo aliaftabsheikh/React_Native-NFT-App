@@ -1,20 +1,44 @@
-import React from 'react'
-import { View, Text, SafeAreaView, Image, StatusBar, FlatList } from "react-native";
+import React from "react";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  Image,
+  StatusBar,
+  FlatList,
+} from "react-native";
 import { COLORS, SIZES, assets, SHADOWS, FONTS } from "../constants";
-import { CircleButton, RectButton, SubInfo, DetailsDesc, DetailsBid, FocusedStatusBar } from "../components";
+import {
+  CircleButton,
+  RectButton,
+  SubInfo,
+  DetailsDesc,
+  DetailsBid,
+  FocusedStatusBar,
+} from "../components";
 
-
-
+const DetailsHeader = ({ data, navigation }) => {
+  return (
+    <View style={{ width: "100%", height: 373 }}>
+      <Image source={data.image} />
+    </View>
+  );
+};
 
 const Details = ({ route, navigation }) => {
-    const {data} = route.params;
-    console.log(data)
+  const { data } = route.params;
+  console.log(data);
 
-    return (
+  return (
     <SafeAreaView style={{ flex: 1 }}>
-        <FocusedStatusBar barStyle="dark-content" backgroundColor="transparent" translucent={true}/>
+      <FocusedStatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent={true}
+      />
 
-        <View style={{
+      <View
+        style={{
           width: "100%",
           position: "absolute",
           bottom: 0,
@@ -23,24 +47,27 @@ const Details = ({ route, navigation }) => {
           alignItems: "center",
           backgroundColor: "rgba(255,255,255,0.5)",
           zIndex: 1,
-        }}>
-            <RectButton minWidth={170} fontSize={SIZES.large} {...SHADOWS.dark}/>
-        </View>
+        }}
+      >
+        <RectButton minWidth={170} fontSize={SIZES.large} {...SHADOWS.dark} />
+      </View>
 
-        <FlatList
+      <FlatList
         data={data.bids}
-        renderItem={({item})=> <DetailsBid bid={item}/>}
+        renderItem={({ item }) => <DetailsBid bid={item} />}
         keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom : SIZES.extraLarge * 3}}
-        ListHeaderComponent={()=>(
-            <React.Fragment>
-                <DetailsHeader/>
-            </React.Fragment>
+        contentContainerStyle={{
+          paddingBottom: SIZES.extraLarge * 3,
+        }}
+        ListHeaderComponent={() => (
+          <React.Fragment>
+            <DetailsHeader data={data} navigation={navigation} />
+          </React.Fragment>
         )}
-        />
+      />
     </SafeAreaView>
-    )
-}
+  );
+};
 
-export default Details
+export default Details;
